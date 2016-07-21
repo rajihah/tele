@@ -7,6 +7,7 @@
  * 
  * Dibuat oleh Hasanudin HS
  * @hasanudinhs di Telegram dan Twitter
+ * Ebook live http://telegram.banghasan.com/
  *
  * PertamaCurlBot.php
  * Bot PHP sederhana Menggunakan Curl
