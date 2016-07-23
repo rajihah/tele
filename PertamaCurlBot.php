@@ -8,12 +8,19 @@
  * Dibuat oleh Hasanudin HS
  * @hasanudinhs di Telegram dan Twitter
  * Ebook live http://telegram.banghasan.com/
- *
+ * -----------------------
+ * Grup @botphp
+ * Jika ada pertanyaan jangan via PM
+ * langsung ke grup saja.
+ * ----------------------
  * PertamaCurlBot.php
  * Bot PHP sederhana Menggunakan Curl
- * Versi 0.01
+ * Versi 0.02
  * Juli 2016
- *
+ * Last Update : 23 Juli 2016 22:40 WIB
+ * 
+ * Default adalah webhook!
+ * Default pake API pihak ke-3, siap tanpa https / SSL
  */
 
 // masukkan bot token di sini
@@ -24,7 +31,7 @@ define('BOT_TOKEN', 'TokenBot');
 
 // versi 3rd party, biar bisa tanpa https / tanpa SSL.
 define('API_URL', 'https://api.pwrtelegram.xyz/bot'.BOT_TOKEN.'/'); 
-define('myVERSI','0.01');
+define('myVERSI','0.02');
 
 // aktifkan ini jika ingin menampilkan debugging poll
 $debug = false;
@@ -178,11 +185,17 @@ function processMessage($message) {
       $text  = "Ada sesuatu di bola matamu..";
     }
     
-    sendMessage($idpesan, $idchat, $text);
+    $hasil = sendMessage($idpesan, $idchat, $text);
+    if ( $GLOBALS['debug']) {
+      // hanya nampak saat metode poll dan debug = true;
+      echo "Pesan yang dikirim: ".$text.PHP_EOL;
+      print_r($hasil);
+    }
   }    
 
 }
 
+// pencetakan versi dan info waktu server, berfungsi jika test hook
 echo "Ver. ".myVERSI." OK Start!".PHP_EOL.date('Y-m-d H:i:s'). PHP_EOL;
 
 function printUpdates($result){
@@ -218,9 +231,10 @@ $update = json_decode($content, true);
 
 if (!$update) {
   // ini jebakan jika ada yang iseng mengirim sesuatu ke hook
-  // dan tidak sesuati format harus dibatalkan
+  // dan tidak sesuai format JSON harus ditolak!
   exit;
 } else {
+  // sesuai format JSON, proses pesannya
   processMessage($update);
 }
 
