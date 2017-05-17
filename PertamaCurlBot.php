@@ -27,11 +27,9 @@
 define('BOT_TOKEN', 'TokenBot'); 
 
 // versi official telegram bot
-// define('API_URL', 'https://api.telegram.org/bot'.BOT_TOKEN.'/');
+define('API_URL', 'https://api.telegram.org/bot'.BOT_TOKEN.'/');
 
-// versi 3rd party, biar bisa tanpa https / tanpa SSL.
-define('API_URL', 'https://api.pwrtelegram.xyz/bot'.BOT_TOKEN.'/'); 
-define('myVERSI','0.02');
+define('myVERSI','0.03');
 
 // aktifkan ini jika ingin menampilkan debugging poll
 $debug = false;
