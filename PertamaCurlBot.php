@@ -24,7 +24,7 @@
  */
 
 // masukkan bot token di sini
-define('BOT_TOKEN', 'TokenBot'); 
+define('BOT_TOKEN', '399057270:AAG67eQ3C06rvnPeIPz3HYTyBc1oNVVXMzQ'); 
 
 // versi official telegram bot
 define('API_URL', 'https://api.telegram.org/bot'.BOT_TOKEN.'/');
